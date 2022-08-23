@@ -1,0 +1,4 @@
+{
+    "python.defaultInterpreterPath": "C:\\Users\\sesa634269\\Desktop\\React+Django\\backend\\.env\\Scripts\\python",
+    "python.envFile": "${workspaceFolder}/backend/.env"
+}
