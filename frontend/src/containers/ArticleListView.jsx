@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Articles from '../components/Article';
 import axios from 'axios';
+import CustomForm from '../components/Form';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 // const data = Array.from({
 //     length: 23,
@@ -14,24 +18,33 @@ import axios from 'axios';
 //       'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
 //   }));
  
-class ArticleList extends Component {
-    state = { 
-        articles:[]
-    } 
+const ArticleList = () => {
+    const [articles, setArticles] = useState([])
+     let location = useLocation()
     
-    componentDidMount() {
+    useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/')
             .then((res) => {
-                this.setState({ articles: res.data });
+                setArticles(res.data);
                 console.log(res.data);
             }
             );
-    }
-    render() { 
+    },[location]
+    
+    );
+    
+
+    
         return (
-            <Articles data={ this.state.articles} />
+            <div>
+                <Articles data={articles} />
+                <br />
+                <h2>Create new Article</h2>
+                <CustomForm requestType='post' btnText='Create' handleUpdate={setArticles} />
+                
+            </div>
         );
-    }
+    
  }
   
  export default ArticleList;
