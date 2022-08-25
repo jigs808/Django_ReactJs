@@ -13,14 +13,18 @@ const CustomLayout = (props) => {
                 theme="dark"
                 mode="horizontal"
                 defaultSelectedKeys={['2']}
-                items={new Array(15).fill(null).map((_, index) => {
-                const key = index + 1;
-                return {
-                    key,
-                    label: `nav ${key}`,
-                };
-                })}
-            />
+            >
+                    <Menu.Item key='1'>
+                        <Link to="/">
+                            Posts
+                        </Link>
+                    </Menu.Item>     
+                    <Menu.Item key='2'>
+                        <Link to="/login">
+                            Login
+                        </Link>
+                    </Menu.Item> 
+               </Menu>
             </Header>
             <Content
             style={{

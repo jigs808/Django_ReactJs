@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Articles from '../components/Article';
 import axios from 'axios';
 import CustomForm from '../components/Form';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 // const data = Array.from({
 //     length: 23,
@@ -19,8 +18,7 @@ import { useLocation } from 'react-router-dom';
 //   }));
  
 const ArticleList = () => {
-    const [articles, setArticles] = useState([])
-     let location = useLocation()
+    const [articles, setArticles] = useState([]);
     
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/')
@@ -29,7 +27,7 @@ const ArticleList = () => {
                 console.log(res.data);
             }
             );
-    },[location]
+    },[]
     
     );
     

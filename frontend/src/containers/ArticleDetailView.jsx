@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import axios from 'axios';
 import { Card,Button, Form } from 'antd';
-import { useLocation, useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import CustomForm from '../components/Form';
 
 
@@ -9,7 +9,7 @@ import CustomForm from '../components/Form';
  
 const ArticleDetail = () => {
     const [article, setArticle] = useState({});
-
+    let navigate = useNavigate();
     let { articleID } = useParams();
 
     useEffect(() => {
@@ -23,10 +23,7 @@ const ArticleDetail = () => {
     );
     const handleDelete = () => {
         axios.delete(`http://127.0.0.1:8000/api/${articleID}/`)
-            .then((res) => {
-                setArticle(res.data );
-                console.log(res.data);
-            }
+            .then( navigate("/",{replace:true})
         );
 
         
